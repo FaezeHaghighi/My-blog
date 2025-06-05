@@ -19,7 +19,7 @@ export default function ArticlesPage() {
       views: 850,
       comments: 4,
     },
-    // مقالات دیگر...
+  
   ];
 
   return (
