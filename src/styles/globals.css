@@ -9,23 +9,20 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: "Vazir", sans-serif;
+  direction: rtl;
 }
 
-/* تنظیمات تم در tailwind.config.js */
-@layer base {
-  :root {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
+/* اضافه کردن این بخش */
+@layer components {
+  .header {
+    @apply bg-blue-400 text-white; /* رنگ ثابت برای هدر */
+  }
+  
+  .footer {
+    @apply bg-blue-400 text-white; /* رنگ ثابت برای فوتر */
   }
 }

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Post } from '@/app/lib/posts';
+import { Post } from '@/lib/posts';
 interface CardProps{
   post : Post;
 }

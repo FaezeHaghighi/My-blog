@@ -1,17 +1,26 @@
-import { posts } from '@/app/lib/posts';
+import { posts } from '@/lib/posts';
+import Link from 'next/link';
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = posts.find((post) => post.id === params.slug);
-
-  if (!post) return <div>پست یافت نشد!</div>;
-
+export default function BlogPage() {
   return (
-    <article className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-      <p className="text-gray-500 mb-6">دسته: {post.category}</p>
-      <div className="prose max-w-none">
-        <p>{post.content}</p>
+    <div className="container mx-auto py-8">
+      <h1 className="text-3xl font-bold mb-8">مقالات</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {posts.map(post => (
+          <div key={post.id} className="border rounded-lg p-6 shadow-sm">
+            <h2 className="text-xl font-bold mb-2">{post.title}</h2>
+            <p className="text-gray-600 mb-4">{post.summary}</p>
+            
+            {/* دکمه جزئیات */}
+            <Link
+              href={`/blog/${post.id}`} // لینک به صفحه داینامیک
+              className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            >
+              مشاهده جزئیات بیشتر
+            </Link>
+          </div>
+        ))}
       </div>
-    </article>
+    </div>
   );
 }
